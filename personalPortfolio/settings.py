@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd(cli_wnj#9#v@v*yvz002(jjw4i0mxw2hv30d3!^&^m0syr&f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -124,3 +124,9 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 HOME_URL = '/home/'
+
+
+try:
+    from .local_settings import *
+except ImportError:
+        print("Looks like no local file. You must be on production")
